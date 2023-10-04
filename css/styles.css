@@ -3,6 +3,8 @@
   --green-color: #30c88f;
   --text-color: #9597a5;
   --accent-color: #2d314d;
+
+  --gradient: linear-gradient(135deg, #33D35E 0%, #2AB6D9 99.58%);
 }
 
 /* FONTS */
@@ -34,7 +36,6 @@
 }
 
 
-
 /* GLOBAL */
 html {
   box-sizing: border-box;
@@ -54,27 +55,11 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
-  font-family:"Public Sans", "Arial", sans-serif;
+  font-family: "Public Sans", "Arial", sans-serif;
   font-size: 16px;
   line-height: 26px;
-  background-color: #fff;
+  background-color: #fafafa;
   color: var(--text-color);
-}
-
-
-/* BUTTON */
-.button {
-  display: inline-block;
-  padding: 8px 36px;
-  color: #fff;
-  text-decoration: none;
-  text-transform: capitalize;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 28px;
-  border-radius: 22px;
-  background: linear-gradient(135deg, #33D35E 0%, #2AB6D9 99.58%);
 }
 
 img {
@@ -125,17 +110,18 @@ select:-webkit-autofill:focus {
 /* CONTAINER */
 .container {
   width: 100%;
-  max-width: 1195px;
-  padding-left: 50px;
-  padding-right: 50px;
+  max-width: 1150px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
 }
 
+
+/* LOGO */
 .logo {
   display: flex;
   text-decoration: none;
-  margin-right: 250px;
 }
 
 .logo:hover {
@@ -146,38 +132,24 @@ select:-webkit-autofill:focus {
   opacity: 0.6;
 }
 
-/* MAIN-CONTENT */
-.main-content {
-  flex-grow: 1;
-}
-
-/* SITE-HEADER */
-.site-header {
-  padding-top: 18px;
-  padding-bottom: 18px;
-}
-
-.site-header__container {
-  display: flex;
-  align-items: center;
-}
-
-
-.logo-img {
+.logo__img {
   width: 139px;
   height: 20px;
-  flex-shrink: 0;
+  object-fit: contain;
 }
 
-.site-header__sitenav {
-  margin-right: auto;
-}
-
+/* SITENAV */
 .sitenav__list {
   display: flex;
   padding: 0;
   margin: 0;
   list-style: none;
+}
+
+.sitenav__item {
+  position: relative;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .sitenav__item:not(:last-child) {
@@ -194,6 +166,79 @@ select:-webkit-autofill:focus {
   font-weight: 400;
   letter-spacing: -0.108px;
 }
+
+.sitenav__link:hover {
+  color: var(--accent-color);
+}
+
+.sitenav__link::after {
+  position: absolute;
+  display: none;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--green-color);
+  background-image: var(--gradient);
+  content: '';
+}
+
+.sitenav__link:hover::after {
+  display: block;
+}
+
+
+/* BUTTON */
+.button {
+  display: inline-block;
+  position: relative;
+  padding: 8px 34px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  border-radius: 22px;
+  letter-spacing: -0.25px;
+  background-color: var(--green-color);
+  background-image: var(--gradient);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.button:hover::after {
+  position: absolute;
+  border-radius: 22px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  content: '';
+}
+
+.button:active {
+  transform: translateY(3px);
+}
+
+/* SITE-HEADER */
+.site-header {
+  background-color: #fff;
+}
+
+.site-header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* MAIN-CONTENT */
+.main-content {
+  flex-grow: 1;
+}
+
 
 /* HERO */
 .hero {
